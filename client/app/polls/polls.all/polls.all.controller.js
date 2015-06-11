@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('workspaceApp')
-  .controller('PortalCtrl', [ 'pollsObj', function (pollsObj) {
+  .controller('PollsAllCtrl', [ 'pollsObj', function (pollsObj) {
     var ctrl = this;
     ctrl.polls = pollsObj;
   }]);

@@ -1,0 +1,29 @@
+<div ng-include="'components/navbar/navbar.html'"></div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 text-center">
+            <h2>{{ ctrl.poll.question }}</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 col-md-4">
+            <chart-pie doughnut="ctrl.poll.chart.doughnut" choices="ctrl.poll.choices" width="350" height="350"></chart-pie>
+        </div>
+        <div class="col-xs-12 col-md-8">
+            <div ng-repeat="choice in ctrl.poll.choices" class="radio" ng-class="disabled">
+                    <label>
+                        <input type="radio" name="option" value="choice.id" ng-disabled="">
+                        {{ choice.label }}
+                    </label>
+                </div>
+                <div ng-if="ctrl.poll.allow_other === true" class="radio" ng-class="disabled">
+                    <label>
+                        <input type="radio" name="option" value="" ng-disabled="">
+                        <input type="text"  name="other" placeholder="Other" ng-disabled="">
+                    </label>                    
+                </div>
+                <input class="btn btn-primary" type="submit" value="Vote" ng-disabled="">
+        </div>
+    </div>
+</div>

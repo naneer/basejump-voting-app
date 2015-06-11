@@ -1,0 +1,16 @@
+<div ng-include="'components/navbar/navbar.html'"></div>
+
+<div class="container">
+    <div class="row">
+        <div ng-repeat="poll in ctrl.polls" class="col-xs-12 col-sm-6 col-md-4">
+            <a ui-sref="polls.show({id: poll.poll_id})">
+            <div class="thumbnail">
+                <chart-pie doughnut="poll.chart.doughnut" choices="poll.choices"></chart-pie>
+                    <div class="caption">
+                        <h4>{{ poll.question }}</h4>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
