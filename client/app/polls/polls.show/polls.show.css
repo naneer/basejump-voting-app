@@ -1,0 +1,14 @@
+.choice, .choice-other {
+    border-width: 2px;
+    border-style: solid;
+    border-radius: 4px;
+    font-size: 1.5em;
+}
+
+.choice-container {
+    margin: 5px 0;
+}
+
+.choice-other input[type="text"]{
+    border: 0;
+}

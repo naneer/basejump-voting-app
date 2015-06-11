@@ -16,6 +16,7 @@ angular.module('workspaceApp')
               return Polls.query().$promise;
             }
           ]
-        }
+        },
+        authenticate: true
       });
   }]);
