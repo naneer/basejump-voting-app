@@ -2,10 +2,18 @@
 
 angular.module('workspaceApp')
   .controller('NavbarCtrl', function ($scope, $location, Auth) {
-    $scope.menu = [{
-      'title': 'Home',
-      'link': '/'
-    }];
+    $scope.menu = [
+      {
+        'title': 'My Portal',
+        'link': '/portal',
+        'route': 'portal'
+      },
+      {
+        'title': 'Add Poll',
+        'link': '/polls/new',
+        'route': 'polls.new'
+      }
+    ];
 
     $scope.isCollapsed = true;
     $scope.isLoggedIn = Auth.isLoggedIn;
