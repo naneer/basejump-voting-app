@@ -8,6 +8,15 @@ angular.module('workspaceApp', [
   'ui.bootstrap'
 ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
+    $urlRouterProvider.rule(function($injector, $location){
+      var path = $location.path();
+      
+      // Remove trailing slashes from path
+      if (path !== '/' && path.slice(-1) === '/') {
+        $location.replace().path(path.slice(0, -1));
+      }
+    });
+    
     $urlRouterProvider
       .otherwise('/');
 

@@ -11,7 +11,7 @@ angular.module('workspaceApp')
       bindToController: true,
       replace: true,
       scope: {
-        doughnut: '=',
+        type: '=',
         choices: '='
       },
       link: function (scope, element, attrs, ctrl) {
@@ -20,9 +20,9 @@ angular.module('workspaceApp')
       var ctx = element[0].getContext("2d");    
       var Chartjs = chartService.getChart();
 
-      if(ctrl.doughnut){
+      if(ctrl.type === 'doughnut'){
         var myNewChart = new Chartjs(ctx).Doughnut(data);
-      } else {
+      } else if(ctrl.type === 'pie') {
         var myNewChart = new Chartjs(ctx).Pie(data);        
       }
       
