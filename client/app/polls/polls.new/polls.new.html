@@ -21,16 +21,21 @@
                     </label>
                 </div>
             </div>
-            <div class="form-group">
+            <div class="row">
+            <div class="form-group col-md-8">
                 <h5>Add Choices</h5>
                 <ul class="list-unstyled">
                     <li ng-repeat="choice in ctrl.poll.choices track by $index">
-                        <input type="text" class="form-control" ng-model="ctrl.poll.choices[$index]" name="{{ $index }}" /> 
+                        <input type="text" class="form-control" ng-model="ctrl.poll.choices[$index].label" name="{{ $index }}" /> 
                     </li>
                     <li>
                         <button type="button" class="btn btn-primary btn-md btn-block" ng-click="ctrl.addChoice()">+ Add Choice</button>
                     </li>
                 </ul>
+            </div>
+            <div class="col-md-4 hidden-sm hidden-xs">
+                <chart-pie type="ctrl.poll.chart.type" choices="ctrl.poll.choices" width="300" height="300"></chart-pie>
+            </div>
             </div>
             <div class="form-group">
                 <label>
@@ -38,7 +43,7 @@
                     Allow Other?
                 </label>
             </div>
-            <button type="submit" class="btn btn-primary btn-lg btn-block">Submit</button>
+            <button type="submit" class="btn btn-primary btn-md btn-block">Submit</button>
         </form>
     </div>
 </div>
