@@ -3,7 +3,10 @@
 <div class="container">
     <div class="row">
         <div class="col-xs-12 text-center">
-            <h2>{{ ctrl.poll.question }}</h2>
+            <h2>
+            {{ ctrl.poll.question }}
+            <button type="button" class="btn btn-danger" ng-if="ctrl.currentUserID === ctrl.poll.user_id">Delete</button>
+            </h2>
         </div>
     </div>
     <div class="row">
