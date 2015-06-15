@@ -5,12 +5,10 @@ angular.module('workspaceApp')
     $scope.menu = [
       {
         'title': 'My Portal',
-        'link': '/portal',
         'route': 'portal.feeds'
       },
       {
         'title': 'Add Poll',
-        'link': '/polls/new',
         'route': 'polls.new'
       }
     ];
@@ -26,6 +24,10 @@ angular.module('workspaceApp')
     };
 
     $scope.isActive = function(route) {
-      return route.split(".")[0] === $state.$current.name.split(".")[0];
+      var parentRoute = $state.$current.name.split(".")[0];
+      if(parentRoute === 'portal'){
+        return route.split(".")[0] === parentRoute; 
+      }
+      return $state.is(route);
     };
   }]);

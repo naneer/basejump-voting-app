@@ -6,13 +6,15 @@ angular.module('workspaceApp')
     ctrl.menu = [
       {
         'title': 'Feed',
-        'link': '/portal',
         'route': 'portal.feeds'
       },
       {
         'title': 'Following',
-        'link': '/portal/following',
         'route': 'portal.following'
+      },
+      { 
+        'title': 'My Polls',
+        'route': 'portal.mypolls'
       }
     ];
     

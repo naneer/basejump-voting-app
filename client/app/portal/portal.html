@@ -3,7 +3,7 @@
 <div class="container">
     <div class="row">
         <div class="col-xs-12">
-            <ul class="nav nav-pills">
+            <ul class="nav nav-tabs">
                 <li ng-repeat="item in ctrl.menu" ng-class="{active: ctrl.isActive(item.route)}">
                     <a ui-sref="{{item.route}}">{{ item.title }} </a>
                 </li>
