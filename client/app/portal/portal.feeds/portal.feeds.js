@@ -3,11 +3,12 @@
 angular.module('workspaceApp')
   .config(['$stateProvider', function ($stateProvider) {
     $stateProvider
-      .state('polls.all', {
+      .state('portal.feeds', {
         url: '',
-        templateUrl: 'app/polls/polls.all/polls.all.html',
-        controller: 'PollsAllCtrl',
+        templateUrl: 'app/portal/portal.feeds/portal.feeds.html',
+        controller: 'PortalFeedsCtrl',
         controllerAs: 'ctrl',
+        authenticate: true,
         resolve: {
           pollsObj: [
             '$resource', 

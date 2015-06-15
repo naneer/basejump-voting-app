@@ -1,12 +1,12 @@
 'use strict';
 
 angular.module('workspaceApp')
-  .controller('NavbarCtrl', function ($scope, $location, Auth) {
+  .controller('NavbarCtrl', [ '$scope', '$state', 'Auth', function ($scope, $state, Auth) {
     $scope.menu = [
       {
         'title': 'My Portal',
         'link': '/portal',
-        'route': 'portal'
+        'route': 'portal.feeds'
       },
       {
         'title': 'Add Poll',
@@ -22,10 +22,10 @@ angular.module('workspaceApp')
 
     $scope.logout = function() {
       Auth.logout();
-      $location.path('/login');
+      $state.go('login');
     };
 
     $scope.isActive = function(route) {
-      return route === $location.path();
+      return route.split(".")[0] === $state.$current.name.split(".")[0];
     };
-  });
+  }]);

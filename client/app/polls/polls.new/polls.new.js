@@ -7,6 +7,7 @@ angular.module('workspaceApp')
         url: '/new',
         templateUrl: 'app/polls/polls.new/polls.new.html',
         controller: 'PollsNewCtrl',
-        controllerAs: 'ctrl'
+        controllerAs: 'ctrl',
+        authenticate: true
       });
   }]);

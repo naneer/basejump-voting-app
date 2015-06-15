@@ -1,0 +1,12 @@
+<div class="row">
+    <div ng-repeat="poll in ctrl.polls" class="col-xs-12 col-sm-6 col-md-4">
+        <a ui-sref="polls.show({id: poll.poll_id })">
+        <div class="thumbnail">
+            <chart-pie type="poll.chart.type" choices="poll.choices" width="150" height="150"></chart-pie>
+                <div class="caption">
+                    <h4>{{ poll.question }}</h4>
+                </div>
+            </div>
+        </a>
+    </div>
+</div>

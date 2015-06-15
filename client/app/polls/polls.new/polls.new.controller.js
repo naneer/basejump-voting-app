@@ -4,8 +4,7 @@ angular.module('workspaceApp')
   .controller('PollsNewCtrl', [function () {
     var ctrl = this;
     ctrl.poll = {
-      choices: [
-      ],
+      choices: [],
       chart: {
         type: "pie"
       }

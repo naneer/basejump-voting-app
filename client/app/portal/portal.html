@@ -2,42 +2,13 @@
 
 <div class="container">
     <div class="row">
-        <div ng-repeat="poll in ctrl.polls" class="col-xs-12 col-sm-6 col-md-4">
-            <a ui-sref="polls.show({id: poll.poll_id })">
-            <div class="thumbnail">
-                <chart-pie type="poll.chart.type" choices="poll.choices" width="150" height="150"></chart-pie>
-                    <div class="caption">
-                        <h4>{{ poll.question }}</h4>
-                    </div>
-                </div>
-            </a>
+        <div class="col-xs-12">
+            <ul class="nav nav-pills">
+                <li ng-repeat="item in ctrl.menu" ng-class="{active: ctrl.isActive(item.route)}">
+                    <a ui-sref="{{item.route}}">{{ item.title }} </a>
+                </li>
+            </ul>
         </div>
     </div>
+    <ui-view></ui-view>
 </div>
-
-
-
-    <!--<div ng-repeat="poll in feed.polls" class="col-xs-12 col-sm-6 col-md-4">
-        <poll-thumbnail data="poll"></poll-thumbnail>
-    </div>
-    <div class="col-xs-12 col-sm-6 col-md-4">
-        <div class="thumbnail">
-            <chart-pie doughnut="poll.doughnut" chart-id="test3"></chart-pie>
-            <div class="caption">
-                <h3>Favorite Noodle Soup?</h3>
-                <div ng-repeat="choice in poll.choices" class="radio" ng-class="disabled">
-                    <label>
-                        <input type="radio" ng-model="" name="option" value="choice.id" ng-disabled="">
-                        {{ choice.name }}
-                    </label>
-                </div>
-                <div ng-if="poll.allowother === true" class="radio" ng-class="disabled">
-                    <label>
-                        <input type="radio" ng-model="" name="option" value="" ng-disabled="">
-                        <input type="text"  ng-model="" name="other" placeholder="Other" ng-disabled="">
-                    </label>                    
-                </div>
-                <input class="btn btn-primary" type="submit" value="Vote" ng-disabled="">
-            </div>
-        </div>
-    </div> -->
