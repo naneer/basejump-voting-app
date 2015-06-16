@@ -5,9 +5,7 @@ angular.module('workspaceApp')
     var ctrl = this;
     ctrl.poll = {
       choices: [],
-      chart: {
-        type: "pie"
-      }
+      chart_type: "pie"
     };
     
     var filterChoices = function(choices){

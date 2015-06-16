@@ -11,12 +11,13 @@
     </div>
     <div class="row">
         <div class="col-xs-12 col-md-7">
-            <chart-pie type="ctrl.poll.chart.type" choices="ctrl.poll.choices" width="300" height="300"></chart-pie>
+            <chart-pie type="ctrl.poll.chart_type" choices="ctrl.poll.choices" width="300" height="300"></chart-pie>
         </div>
         <div class="col-xs-12 col-md-5">
+            <form ng-submit="ctrl.castVote()">
             <div class="choice-container" ng-repeat="choice in ctrl.poll.choices" class="radio" ng-class="disabled">
                     <label class="btn choice" ng-style="{borderColor: choice.color}">
-                        <input type="radio" ng-model="ctrl.selection" name="option" ng-value="choice.id" ng-disabled="">
+                        <input type="radio" ng-model="ctrl.selection" name="option" ng-value="choice._id" ng-disabled="">
                         {{ choice.label }} <span ng-hide="true" class="badge choice-badge">{{choice.value}}</span>
                     </label>
                 </div>
@@ -26,7 +27,8 @@
                         <input type="text" ng-click="ctrl.selection = 'other'" name="other"  placeholder="Other" ng-disabled="">
                     </label>                    
                 </div>
-                <input class="btn btn-primary" type="submit" value="Vote" ng-disabled="">
+                <button class="btn btn-primary" type="submit" ng-disabled="">Vote</button>
+            </form>
         </div>
     </div>
 </div>

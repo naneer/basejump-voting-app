@@ -10,13 +10,13 @@
                 <h5>Chart Type</h5>
                 <div class="radio-inline">
                     <label>
-                        <input type="radio" ng-model="ctrl.poll.chart.type" name="chart_type" value="pie" />
+                        <input type="radio" ng-model="ctrl.poll.chart_type" name="chart_type" value="pie" />
                         Pie
                     </label>
                 </div>
                 <div class="radio-inline">
                     <label>
-                        <input type="radio" ng-model="ctrl.poll.chart.type" name="chart_type" value="doughnut" />
+                        <input type="radio" ng-model="ctrl.poll.chart_type" name="chart_type" value="doughnut" />
                         Doughnut
                     </label>
                 </div>
@@ -34,7 +34,7 @@
                 </ul>
             </div>
             <div class="col-md-4 hidden-sm hidden-xs">
-                <chart-pie type="ctrl.poll.chart.type" choices="ctrl.poll.choices" width="300" height="300"></chart-pie>
+                <chart-pie type="ctrl.poll.chart_type" choices="ctrl.poll.choices" width="300" height="300"></chart-pie>
             </div>
             </div>
             <div class="form-group">
