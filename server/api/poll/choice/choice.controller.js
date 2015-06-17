@@ -5,7 +5,7 @@ var Poll = require('../poll.model');
 
 
 // Vote on Choice
-exports.create = function(req, res){
+exports.vote = function(req, res){
   Poll.findOneAndUpdate(
       { "_id": req.params.id, "choices._id": req.params.choice_id },
       { 
@@ -19,6 +19,26 @@ exports.create = function(req, res){
         return res.json(201, poll);   
       }
   );  
+};
+
+exports.update = function(req, res){
+  Poll.findByIdAndUpdate(req.params.id, 
+    {
+      "$push": {
+        "choices": {
+          "label": req.body.label,
+          "color": "#000000",
+          "highlight": "#cccccc",
+          "value": 1
+        }
+      }
+    },
+    { new: true },
+    function(err, poll){
+      if(err) { return handleError(res, err); }
+      return res.json(201, poll)
+    }
+  );
 };
 
 function handleError(res, err) {

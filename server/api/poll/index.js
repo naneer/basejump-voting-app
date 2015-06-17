@@ -16,6 +16,8 @@ router.put('/:id', controller.update);
 router.patch('/:id', controller.update);
 router.delete('/:id', controller.destroy);
 
-choiceRouter.post('/:choice_id', choiceController.create);
+choiceRouter.put('/', choiceController.update);
+choiceRouter.post('/:choice_id', choiceController.vote);
+
 
 module.exports = router;

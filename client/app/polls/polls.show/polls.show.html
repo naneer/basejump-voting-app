@@ -24,7 +24,7 @@
                 <div class="choice-container" ng-if="ctrl.poll.allow_other === true" class="radio" ng-class="disabled">
                     <label class="btn choice-other" style="border-color: #ccc;">
                         <input type="radio" ng-model="ctrl.selection" name="option" value="other" ng-disabled="">
-                        <input type="text" ng-click="ctrl.selection = 'other'" name="other"  placeholder="Other" ng-disabled="">
+                        <input type="text" ng-click="ctrl.selection = 'other'" ng-model="ctrl.other" name="other"  placeholder="Other" ng-disabled="">
                     </label>                    
                 </div>
                 <button class="btn btn-primary" type="submit" ng-disabled="">Vote</button>
