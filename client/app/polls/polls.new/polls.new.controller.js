@@ -54,9 +54,7 @@ angular.module('workspaceApp')
         };
       });
 
-      console.log(ctrl.poll);
       var poll = Poll.save({}, ctrl.poll, function(value, res){
-        console.log(value);
         $state.go('polls.show',{id: value._id});
       }, function(err){
         console.log(err);

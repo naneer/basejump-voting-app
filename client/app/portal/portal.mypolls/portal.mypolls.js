@@ -11,9 +11,9 @@ angular.module('workspaceApp')
         authenticate: true,
         resolve: {
           pollsObj: [
-            'Poll',
-            function(Poll){
-              return Poll.query().$promise;
+            'Poll', 'Auth',
+            function(Poll, Auth){
+              return Poll.query({user_id: Auth.getCurrentUser()._id}).$promise;
             }
           ]
         }

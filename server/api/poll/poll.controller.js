@@ -5,7 +5,10 @@ var Poll = require('./poll.model');
 
 // Get list of polls
 exports.index = function(req, res) {
-  Poll.find(function (err, polls) {
+  var query = {};
+  (req.query.user_id) ? (query.user_id = req.query.user_id) : "";
+  
+  Poll.find(query, function (err, polls) {
     if(err) { return handleError(res, err); }
     return res.json(200, polls);
   });
@@ -22,6 +25,7 @@ exports.show = function(req, res) {
 
 // Creates a new poll in the DB.
 exports.create = function(req, res) {
+  req.body.user_id = req.user._id;
   Poll.create(req.body, function(err, poll) {
     if(err) { return handleError(res, err); }
     return res.json(201, poll);
@@ -44,13 +48,15 @@ exports.update = function(req, res) {
 
 // Deletes a poll from the DB.
 exports.destroy = function(req, res) {
-  Poll.findById(req.params.id, function (err, poll) {
-    if(err) { return handleError(res, err); }
-    if(!poll) { return res.send(404); }
-    poll.remove(function(err) {
-      if(err) { return handleError(res, err); }
-      return res.send(204);
-    });
+  Poll.findOne(
+    { "_id": req.params.id, "user_id": req.user._id }, 
+      function (err, poll) {
+        if(err) { return handleError(res, err); }
+        if(!poll) { return res.send(404); }
+        poll.remove(function(err) {
+          if(err) { return handleError(res, err); }
+        return res.send(204);
+      });
   });
 };
 
