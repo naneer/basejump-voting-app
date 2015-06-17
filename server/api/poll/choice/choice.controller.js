@@ -27,7 +27,7 @@ exports.update = function(req, res){
       "$push": {
         "choices": {
           "label": req.body.label,
-          "color": "#000000",
+          "color": "#cccccc",
           "highlight": "#cccccc",
           "value": 1
         }
