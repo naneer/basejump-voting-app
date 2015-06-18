@@ -55,6 +55,7 @@ Poll.find({}).remove(function(){
     "allow_other": true,
     "user_id": "557f6c88ae9dd63f137b1497",
     "chart_type": "doughnut",
+    "voters": [],
     "choices": [
         {
             "label": "Ramen",

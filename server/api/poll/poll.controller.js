@@ -7,7 +7,6 @@ var Poll = require('./poll.model');
 exports.index = function(req, res) {
   var query = {};
   (req.query.user_id) ? (query.user_id = req.query.user_id) : "";
-  
   Poll.find(query, function (err, polls) {
     if(err) { return handleError(res, err); }
     return res.json(200, polls);

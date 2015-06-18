@@ -4,7 +4,11 @@ angular.module('workspaceApp')
   .controller('PollsShowCtrl', [ 'currentPoll', 'currentUser', 'Choice', '$state', function (currentPoll, currentUser, Choice, $state) {
     var ctrl = this;
     ctrl.poll = currentPoll;
-    ctrl.currentUserID = currentUser._id;
+    if(currentUser === "guest") {
+      ctrl.guestUser = true;  
+    } else {
+      ctrl.currentUserID = currentUser._id;
+    }
     
     ctrl.castVote = function(){
       if(ctrl.selection === 'other'){

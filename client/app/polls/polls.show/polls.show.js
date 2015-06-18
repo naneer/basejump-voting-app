@@ -12,7 +12,10 @@ angular.module('workspaceApp')
           currentUser: [
             'Auth',
             function(Auth){
-              return Auth.getCurrentUser();
+              if(Auth.isLoggedIn()){
+                return Auth.getCurrentUser();
+              } 
+              return "guest";
             }
           ],
           currentPoll: [

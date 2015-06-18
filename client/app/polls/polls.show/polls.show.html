@@ -15,19 +15,20 @@
         </div>
         <div class="col-xs-12 col-md-5">
             <form ng-submit="ctrl.castVote()">
-            <div class="choice-container" ng-repeat="choice in ctrl.poll.choices" class="radio" ng-class="disabled">
+            <div class="choice-container" ng-repeat="choice in ctrl.poll.choices" class="radio">
                     <label class="btn choice" ng-style="{borderColor: choice.color}">
-                        <input type="radio" ng-model="ctrl.selection" name="option" ng-value="choice._id" ng-disabled="">
-                        {{ choice.label }} <span ng-hide="true" class="badge choice-badge">{{choice.value}}</span>
+                        <input type="radio" ng-model="ctrl.selection" name="option" ng-value="choice._id"ng-disabled="ctrl.guestUser">
+                        {{ choice.label }} <span class="badge choice-badge">{{choice.value}}</span>
                     </label>
                 </div>
-                <div class="choice-container" ng-if="ctrl.poll.allow_other === true" class="radio" ng-class="disabled">
+                <div class="choice-container" ng-if="ctrl.poll.allow_other === true" class="radio">
                     <label class="btn choice-other" style="border-color: #ccc;">
-                        <input type="radio" ng-model="ctrl.selection" name="option" value="other" ng-disabled="">
-                        <input type="text" ng-click="ctrl.selection = 'other'" ng-model="ctrl.other" name="other"  placeholder="Other" ng-disabled="">
+                        <input type="radio" ng-model="ctrl.selection" name="option" value="other" ng-disabled="ctrl.guestUser">
+                        <input type="text" ng-click="ctrl.selection = 'other'" ng-model="ctrl.other" name="other"  placeholder="Other" ng-disabled="ctrl.guestUser">
                     </label>                    
                 </div>
-                <button class="btn btn-primary" type="submit" ng-disabled="">Vote</button>
+                <button class="btn btn-primary" type="submit" ng-hide="ctrl.guestUser" ng-disabled="ctrl.guestUser">Vote</button>
+                <a ui-sref="login" class="btn btn-primary" ng-show="ctrl.guestUser">Login to Vote</a>
             </form>
         </div>
     </div>

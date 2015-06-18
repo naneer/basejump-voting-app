@@ -1,5 +1,5 @@
 <div class="row">
-    <div ng-repeat="poll in ctrl.polls" class="col-xs-12 col-sm-6 col-md-4">
+    <div ng-repeat="poll in ctrl.polls | orderBy : 'created_at' : true" class="col-xs-12 col-sm-6 col-md-4">
         <a ui-sref="polls.show({id: poll._id })">
             <div class="thumbnail">
                 <chart-pie type="poll.chart_type" choices="poll.choices" width="150" height="150"></chart-pie>

@@ -1,7 +1,8 @@
 'use strict';
 
 var mongoose = require('mongoose'),
-    Schema = mongoose.Schema;
+    Schema = mongoose.Schema,
+    timestamps = require('mongoose-timestamps');
     
 var choiceSchema = new Schema({
   label: String,
@@ -17,5 +18,7 @@ var PollSchema = new Schema({
   chart_type: String,
   choices: [choiceSchema]
 });
+
+PollSchema.plugin(timestamps);
 
 module.exports = mongoose.model('Poll', PollSchema);
