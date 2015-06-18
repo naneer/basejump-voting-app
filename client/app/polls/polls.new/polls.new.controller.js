@@ -45,6 +45,7 @@ angular.module('workspaceApp')
       ctrl.poll.choices.push({"label": ""});
     };
     ctrl.submitPoll = function(){
+      ctrl.disableForm = true;
       ctrl.poll.choices = Array.zip(filterChoices(ctrl.poll.choices), concatColors(ctrl.poll.choices.length), function(l, r){
         return { 
           label: l.label,
@@ -58,6 +59,7 @@ angular.module('workspaceApp')
         $state.go('polls.show',{id: value._id});
       }, function(err){
         console.log(err);
+        ctrl.disableForm = false;
       });
       
     };
