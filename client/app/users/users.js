@@ -3,17 +3,17 @@
 angular.module('workspaceApp')
   .config(['$stateProvider', function ($stateProvider) {
     $stateProvider
-      .state('portal.following', {
-        url: '/following',
-        templateUrl: 'app/portal/portal.following/portal.following.html',
-        controller: 'PortalFollowingCtrl',
+      .state('users', {
+        url: '/users',
+        templateUrl: 'app/users/users.html',
+        controller: 'UsersCtrl',
         controllerAs: 'ctrl',
-        authenicate: true,
+        authenticate: true,
         resolve: {
           usersObj: [
             'User',
             function(User){
-              return User.following().$promise;
+              return User.query().$promise;
             }
           ]
         }

@@ -2,7 +2,7 @@
     <div class="col-xs-12">
         <ul class="list-group">
             <li class="list-group-item" ng-repeat="user in ctrl.users">
-                {{ user.username }}
+                {{ user.name }} <button type="button" class="btn btn-xs btn-default" ng-click="ctrl.unfollow(user._id)">Unfollow</button>
             </li>
         </ul>
     </div>

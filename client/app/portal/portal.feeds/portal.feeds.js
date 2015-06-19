@@ -13,7 +13,7 @@ angular.module('workspaceApp')
           pollsObj: [
             'Poll', 
             function(Poll){
-              return Poll.query().$promise;
+              return Poll.query({ id: "myfeed" }).$promise;
             }
           ]
         }

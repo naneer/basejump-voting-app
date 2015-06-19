@@ -2,8 +2,9 @@
 
 angular.module('workspaceApp')
   .factory('User', ['$resource', function ($resource) {
-    return $resource('/api/users/:id/:controller', {
-      id: '@_id'
+    return $resource('/api/users/:id/:controller/:follow_id', {
+      id: '@_id',
+      follow_id: '@follow_id'
     },
     {
       changePassword: {
@@ -16,6 +17,25 @@ angular.module('workspaceApp')
         method: 'GET',
         params: {
           id:'me'
+        }
+      },
+      following: {
+        method: 'GET', 
+        isArray: true,
+        params: {
+          controller: 'follows'
+        }
+      },
+      follow: {
+        method: 'POST',
+        params: {
+          controller: 'follows'
+        }
+      },
+      unfollow: {
+        method: 'DELETE',
+        params: {
+          controller: 'follows'
         }
       }
 	  });

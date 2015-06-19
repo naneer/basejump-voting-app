@@ -2,6 +2,7 @@
 
 var _ = require('lodash');
 var Poll = require('./poll.model');
+var User = require('../user/user.model.js');
 
 // Get list of polls
 exports.index = function(req, res) {
@@ -10,6 +11,22 @@ exports.index = function(req, res) {
   Poll.find(query, function (err, polls) {
     if(err) { return handleError(res, err); }
     return res.json(200, polls);
+  });
+};
+
+// Get list of polls from Users user follows
+exports.feed = function(req, res){
+  var userId = req.user._id;
+  User.findById(userId, 'following', function(err, user){
+    if(err) { return handleError(res, err); }
+    Poll.find({
+      "user_id": {
+        "$in": user.following
+      }
+    }, function(err, polls){
+      if(err) { return handleError(res, err); }
+      res.send(200, polls);
+    })
   });
 };
 

@@ -16,7 +16,7 @@ exports.vote = function(req, res){
       { new: true },
       function(err, poll){
         if(err) { return handleError(res, err); }
-        return res.json(201, poll);   
+        return res.json(201);   
       }
   );  
 };
@@ -36,7 +36,7 @@ exports.update = function(req, res){
     { new: true },
     function(err, poll){
       if(err) { return handleError(res, err); }
-      return res.json(201, poll)
+      return res.json(201)
     }
   );
 };

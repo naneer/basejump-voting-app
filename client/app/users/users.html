@@ -1,0 +1,13 @@
+<div ng-include="'components/navbar/navbar.html'"></div>
+
+<div class="container">
+<div class="row">
+    <div class="col-xs-12">
+        <ul class="list-group">
+            <li class="list-group-item" ng-repeat="user in ctrl.users">
+                {{ user.name }} <button type="button" class="btn btn-xs btn-default" ng-disabled="ctrl.preventDoublePost" ng-click="ctrl.followUser(user._id)">Follow</button>
+            </li>
+        </ul>
+    </div>
+</div>
+</div>

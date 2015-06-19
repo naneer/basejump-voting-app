@@ -11,11 +11,14 @@ var choiceRouter = express.Router({mergeParams: true});
 router.use('/:id/choices', choiceRouter);
 
 router.get('/', controller.index);
+router.get('/myfeed', auth.isAuthenticated(), controller.feed);
 router.get('/:id', controller.show);
 router.post('/', auth.isAuthenticated(), controller.create);
 router.put('/:id', auth.isAuthenticated(), controller.update);
 router.patch('/:id', auth.isAuthenticated(), controller.update);
 router.delete('/:id', auth.isAuthenticated(), controller.destroy);
+
+router.get('/myfeed', auth.isAuthenticated(), controller.feed);
 
 choiceRouter.put('/', auth.isAuthenticated(), choiceController.update);
 choiceRouter.post('/:choice_id', auth.isAuthenticated(), choiceController.vote);

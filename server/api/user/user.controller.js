@@ -14,10 +14,20 @@ var validationError = function(res, err) {
  * restriction: 'admin'
  */
 exports.index = function(req, res) {
-  User.find({}, '-salt -hashedPassword', function (err, users) {
+  var callback = function (err, users) {
     if(err) return res.send(500, err);
     res.json(200, users);
-  });
+  };
+  
+  var query = {};
+  (req.query.name) ? (query.name = req.query.name) : "";
+  
+  
+  if(req.user.role === 'admin'){
+    User.find(query, '-salt -hashedPassword', callback);
+  } else if(req.user.role === 'user'){
+    User.find(query, 'name', callback);
+  }
 };
 
 /**
