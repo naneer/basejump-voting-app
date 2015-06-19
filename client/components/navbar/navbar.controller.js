@@ -10,6 +10,10 @@ angular.module('workspaceApp')
       {
         'title': 'Add Poll',
         'route': 'polls.new'
+      },
+      {
+        'title': 'Users',
+        'route': 'users'
       }
     ];
 
