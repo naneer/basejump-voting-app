@@ -19,9 +19,11 @@ exports.feed = function(req, res){
   var userId = req.user._id;
   User.findById(userId, 'following', function(err, user){
     if(err) { return handleError(res, err); }
+    var feed = user.following;
+    feed.push(userId);
     Poll.find({
       "user_id": {
-        "$in": user.following
+        "$in": feed
       }
     }, function(err, polls){
       if(err) { return handleError(res, err); }
